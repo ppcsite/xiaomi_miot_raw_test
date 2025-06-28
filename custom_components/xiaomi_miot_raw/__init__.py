@@ -148,7 +148,8 @@ async def async_setup_entry(hass, entry):
                 continue
             if t == 'select' and not HAVE_SELECT:
                 continue
-            hass.async_create_task(hass.config_entries.async_forward_entry_setup(entry, t))
+            #hass.async_create_task(hass.config_entries.async_forward_entry_setup(entry, t))
+            await hass.config_entries.async_forward_entry_setups(entry, t)
 
     return True
 
